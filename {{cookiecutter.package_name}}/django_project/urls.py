@@ -5,5 +5,5 @@ admin.site.enable_nav_sidebar = False
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("{{cookiecutter.project_slug}}.urls", namespace="{{cookiecutter.package_name}}")),
+    path("{{cookiecutter.package_name}}/", include("{{cookiecutter.project_slug}}.urls", namespace="{{cookiecutter.package_name}}")),
 ]
