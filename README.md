@@ -1,12 +1,7 @@
-# Cookiecutter PyProject
+# Cookiecutter Django Package
 
-A modern cookiecutter template for creation of new PyPi or internal packages.
+A modern cookiecutter template for creation of a new Django package for PyPi.
 
-## Features
-
-- Pre-Commit
-- Logging setup
-- Sentry integration
 
 ## Quickstart
 
@@ -17,10 +12,10 @@ Cookiecutter 1.4.0 or higher)::
 python3 -m pip install -U cookiecutter
 ```
 
-Generate a Python package project:
+Generate a Django package project:
 
 ```bash
-cookiecutter https://bitbucket.org/tsantor/cookiecutter-pyproject.git
+cookiecutter https://bitbucket.org/tsantor/cookiecutter-django-package.git
 ```
 
 ## Development
