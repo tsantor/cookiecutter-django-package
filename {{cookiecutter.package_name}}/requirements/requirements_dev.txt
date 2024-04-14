@@ -9,11 +9,11 @@ django-environ
 django-extensions
 
 # Project specific requirements
-ua-parser
-user-agents
-django-ipware
-requests
-bs4
+# ua-parser
+# user-agents
+# django-ipware
+# requests
+# bs4
 
 # X Studios
 pip-freezer
