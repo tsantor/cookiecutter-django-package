@@ -1,7 +1,6 @@
-twine
-wheel
-build
-pre-commit
+twine  # https://github.com/pypa/twine
+wheel  # https://github.com/pypa/wheel
+build  # https://github.com/pypa/build
 
 # Bare minimum requirements to provide us similar env to Cookiecutter Django.
 django>=4.2.9,<5.0
@@ -11,4 +10,4 @@ django-extensions
 # Project specific requirements
 
 # X Studios
-pip-freezer
+pip-freezer  # https://github.com/tsantor/pip-freezer
