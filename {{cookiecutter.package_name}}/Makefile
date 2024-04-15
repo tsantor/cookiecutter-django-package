@@ -36,7 +36,7 @@ env_remove:  ## Remove virtual environment
 sqllite_remove:	## Remove sqlite database
 	rm -f db.sqlite3
 
-from_scratch: sqllite_remove env_remove env pip_install migrations migrate superuser serve ## Remove and create virtual environment
+env_from_scratch: sqllite_remove env_remove env pip_install migrations migrate superuser serve ## Remove and create virtual environment
 
 # -----------------------------------------------------------------------------
 # Pip
