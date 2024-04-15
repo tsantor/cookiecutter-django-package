@@ -1,7 +1,7 @@
 from django.db import models
 import uuid
 
-from {{cookiecutter.project_slug}}.mixins import TimeStampedMixin
+from {{cookiecutter.package_dir}}.mixins import TimeStampedMixin
 
 
 # class MyModel(models.Model):

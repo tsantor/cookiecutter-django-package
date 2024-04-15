@@ -1,10 +1,10 @@
 """
 Settings for {{cookiecutter.project_name}} are all namespaced in the
-{{cookiecutter.project_slug.upper()}} setting. For example your project's
+{{cookiecutter.package_dir.upper()}} setting. For example your project's
 `settings.py` file might look like this:
 
-{{cookiecutter.project_slug.upper()}} = {
-    'MY_MODEL': '{{cookiecutter.project_slug}}.models.MyModel'
+{{cookiecutter.package_dir.upper()}} = {
+    'MY_MODEL': '{{cookiecutter.package_dir}}.models.MyModel'
 }
 
 This module provides the `api_settings` object, that is used to access
@@ -17,7 +17,7 @@ from django.test.signals import setting_changed
 from django.utils.module_loading import import_string
 
 DEFAULTS = {
-    "FOO": "{{cookiecutter.project_slug}}.utils.foo",  # example only
+    "FOO": "{{cookiecutter.package_dir}}.utils.foo",  # example only
     "BAR": "value"  # example only
 }
 
@@ -64,7 +64,7 @@ class APISettings:
     A settings object that allows {{cookiecutter.project_name}} settings to be
     accessed as properties. For example:
 
-        from {{cookiecutter.project_slug}}.settings import api_settings
+        from {{cookiecutter.package_dir}}.settings import api_settings
         print(api_settings.MY_MODEL)
 
     Any setting with string import paths will be automatically resolved
@@ -72,7 +72,7 @@ class APISettings:
 
     Note:
     This is an internal class that is only compatible with settings namespaced
-    under the {{cookiecutter.project_slug.upper()}} name. It is not intended to be used by
+    under the {{cookiecutter.package_dir.upper()}} name. It is not intended to be used by
     3rd-party apps, and test helpers like `override_settings` may not work as
     expected.
     """
@@ -87,7 +87,7 @@ class APISettings:
     @property
     def user_settings(self):
         if not hasattr(self, "_user_settings"):
-            self._user_settings = getattr(settings, "{{cookiecutter.project_slug.upper()}}", {})
+            self._user_settings = getattr(settings, "{{cookiecutter.package_dir.upper()}}", {})
         return self._user_settings
 
     def __getattr__(self, attr):
@@ -131,7 +131,7 @@ api_settings = APISettings(None, DEFAULTS, IMPORT_STRINGS)
 
 def reload_api_settings(*args, **kwargs):
     setting = kwargs["setting"]
-    if setting == "{{cookiecutter.project_slug.upper()}}":
+    if setting == "{{cookiecutter.package_dir.upper()}}":
         api_settings.reload()
 
 

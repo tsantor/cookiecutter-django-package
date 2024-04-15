@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     "django_extensions",
     # if your app has other dependencies that need to be added to the site
     # they should be added here
-    "{{cookiecutter.project_slug}}",
+    "{{cookiecutter.package_dir}}",
 ]
 
 MIDDLEWARE = [

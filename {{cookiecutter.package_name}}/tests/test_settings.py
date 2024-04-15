@@ -4,12 +4,12 @@ from unittest.mock import patch
 from django.conf import settings
 from django.utils.module_loading import import_string
 
-from {{cookiecutter.project_slug}}.settings import DEFAULTS
-from {{cookiecutter.project_slug}}.settings import IMPORT_STRINGS
-from {{cookiecutter.project_slug}}.settings import APISettings
-from {{cookiecutter.project_slug}}.settings import import_from_string
-from {{cookiecutter.project_slug}}.settings import perform_import
-from {{cookiecutter.project_slug}}.settings import reload_api_settings
+from {{cookiecutter.package_dir}}.settings import DEFAULTS
+from {{cookiecutter.package_dir}}.settings import IMPORT_STRINGS
+from {{cookiecutter.package_dir}}.settings import APISettings
+from {{cookiecutter.package_dir}}.settings import import_from_string
+from {{cookiecutter.package_dir}}.settings import perform_import
+from {{cookiecutter.package_dir}}.settings import reload_api_settings
 
 
 def test_perform_import():
@@ -26,10 +26,10 @@ def test_import_from_string():
 
 
 
-@patch('{{cookiecutter.project_slug}}.settings.api_settings')
+@patch('{{cookiecutter.package_dir}}.settings.api_settings')
 def test_reload_api_settings(mock_api_settings):
     # Arrange
-    setting = "{{cookiecutter.project_slug.upper()}}"
+    setting = "{{cookiecutter.package_dir.upper()}}"
     kwargs = {"setting": setting}
 
     # Act
@@ -48,7 +48,7 @@ def api_settings():
 class TestAPISettings:
 
     def test_api_settings(self, api_settings):
-        assert api_settings.FOO == import_string("{{cookiecutter.project_slug}}.utils.foo")
+        assert api_settings.FOO == import_string("{{cookiecutter.package_dir}}.utils.foo")
 
     # def test_override_settings(self, api_settings):
     #     from django.test import override_settings
@@ -71,7 +71,7 @@ class TestAPISettings:
 
     def test_user_settings(self, api_settings):
         api_settings.user_settings == {
-            "FOO": "{{cookiecutter.project_slug}}.utils.foo"
+            "FOO": "{{cookiecutter.package_dir}}.utils.foo"
         }
 
 

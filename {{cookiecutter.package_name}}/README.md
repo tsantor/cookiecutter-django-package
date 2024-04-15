@@ -18,12 +18,12 @@ python3 -m pip install {{cookiecutter.package_name}}
 
 ### Settings
 
-To enable `{{cookiecutter.project_slug}}` in your project you need to add it to `INSTALLED_APPS` in your projects `settings.py` file:
+To enable `{{cookiecutter.package_dir}}` in your project you need to add it to `INSTALLED_APPS` in your projects `settings.py` file:
 
 ```python
 INSTALLED_APPS = (
     ...
-    '{{cookiecutter.project_slug}}',
+    '{{cookiecutter.package_dir}}',
     ...
 )
 ```
@@ -31,12 +31,12 @@ INSTALLED_APPS = (
 Add {{cookiecutter.package_name}}'s URL patterns:
 
 ```python
-from {{cookiecutter.project_slug}} import urls as {{cookiecutter.project_slug}}_urls
+from {{cookiecutter.package_dir}} import urls as {{cookiecutter.package_dir}}_urls
 
 
 urlpatterns = [
     ...
-    path(r"", include({{cookiecutter.project_slug}}_urls, namespace='{{cookiecutter.package_name}}')),
+    path(r"", include({{cookiecutter.package_dir}}_urls, namespace='{{cookiecutter.package_name}}')),
     ...
 ]
 ```
