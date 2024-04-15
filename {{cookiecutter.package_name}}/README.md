@@ -1,6 +1,6 @@
 # {{ cookiecutter.project_name }}
 
-![Coverage](https://img.shields.io/badge/coverage-85%25-brightgreen)
+![Coverage](https://img.shields.io/badge/coverage-97%25-brightgreen)
 
 <!-- ![Code Style](https://img.shields.io/badge/code_style-ruff-black) -->
 

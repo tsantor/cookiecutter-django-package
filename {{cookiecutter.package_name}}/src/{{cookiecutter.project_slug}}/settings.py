@@ -1,12 +1,13 @@
 """
-Settings for {{cookiecutter.project_name}} are all namespaced in the {{cookiecutter.project_slug.upper()}}
-setting. For example your project's `settings.py` file might look like this:
+Settings for {{cookiecutter.project_name}} are all namespaced in the
+{{cookiecutter.project_slug.upper()}} setting. For example your project's
+`settings.py` file might look like this:
 
 {{cookiecutter.project_slug.upper()}} = {
-    'FOO': '{{cookiecutter.project_slug}}.bar'
+    'MY_MODEL': '{{cookiecutter.project_slug}}.models.MyModel'
 }
 
-This module provides the `api_setting` object, that is used to access
+This module provides the `api_settings` object, that is used to access
 {{cookiecutter.project_name}} settings, checking for user settings first,
 then falling back to the defaults.
 """
@@ -15,17 +16,22 @@ from django.conf import settings
 from django.test.signals import setting_changed
 from django.utils.module_loading import import_string
 
-DEFAULTS = {"FOO": "{{cookiecutter.project_slug}}.bar"}
+DEFAULTS = {
+    "FOO": "{{cookiecutter.project_slug}}.utils.foo",  # example only
+    "BAR": "value"  # example only
+}
 
 
 # List of settings that may be in string import notation.
 IMPORT_STRINGS = [
-    "FOO",
+    "FOO",  # example only
 ]
 
 
 # List of settings that have been removed
-REMOVED_SETTINGS = []
+REMOVED_SETTINGS = [
+    "REMOVED_SETTING",  # example only
+]
 
 
 def perform_import(val, setting_name):
@@ -35,9 +41,9 @@ def perform_import(val, setting_name):
     """
     if val is None:
         return None
-    elif isinstance(val, str):
+    if isinstance(val, str):
         return import_from_string(val, setting_name)
-    elif isinstance(val, (list, tuple)):
+    if isinstance(val, (list, tuple)):
         return [import_from_string(item, setting_name) for item in val]
     return val
 
@@ -55,19 +61,20 @@ def import_from_string(val, setting_name):
 
 class APISettings:
     """
-    A settings object that allows Deep Link settings to be accessed as
-    properties. For example:
+    A settings object that allows {{cookiecutter.project_name}} settings to be
+    accessed as properties. For example:
 
         from {{cookiecutter.project_slug}}.settings import api_settings
-        print(api_settings.IP_GEO_HANDLER)
+        print(api_settings.MY_MODEL)
 
     Any setting with string import paths will be automatically resolved
     and return the class, rather than the string literal.
 
     Note:
     This is an internal class that is only compatible with settings namespaced
-    under the {{cookiecutter.project_slug.upper()}} name. It is not intended to be used by 3rd-party
-    apps, and test helpers like `override_settings` may not work as expected.
+    under the {{cookiecutter.project_slug.upper()}} name. It is not intended to be used by
+    3rd-party apps, and test helpers like `override_settings` may not work as
+    expected.
     """
 
     def __init__(self, user_settings=None, defaults=None, import_strings=None):
