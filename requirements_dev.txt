@@ -1,6 +1,6 @@
 cookiecutter==2.6.0
 sh==2.0.6
-watchdog[watchmedo]
+watchdog[watchmedo]==4.0.0
 
 # Code quality
 # ------------------------------------------------------------------------------

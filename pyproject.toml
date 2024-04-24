@@ -6,4 +6,4 @@ python_files = [
     "test_*.py",
 ]
 norecursedirs = ["node_modules", "my-django-package", "{{cookiecutter.package_name}}"]
-# filterwarnings = "ignore::DeprecationWarning"
+filterwarnings = "ignore::DeprecationWarning"

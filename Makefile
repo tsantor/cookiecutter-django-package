@@ -78,8 +78,8 @@ pytest:  ## Run tests
 pytest_verbose:  ## Run tests in verbose mode
 	pytest -vvs
 
-coverage:  ## Run tests with coverage
-	coverage run -m pytest && coverage html
+# coverage:  ## Run tests with coverage
+# 	coverage run -m pytest && coverage html
 
 # coverage_verbose:  ## Run tests with coverage in verbose mode
 # 	coverage run -m pytest -vss && coverage html
