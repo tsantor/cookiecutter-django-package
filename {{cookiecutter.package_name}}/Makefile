@@ -36,7 +36,10 @@ env_remove:  ## Remove virtual environment
 sqllite_remove:	## Remove sqlite database
 	rm -f db.sqlite3
 
-env_from_scratch: sqllite_remove env_remove env pip_install migrations migrate superuser serve ## Remove and create virtual environment
+env_recreate: sqllite_remove env_remove env pip_install migrations migrate superuser serve ## Recreate environment from scratch
+
+pyenv_rehash:	## Rehash pyenv
+	pyenv rehash
 
 # -----------------------------------------------------------------------------
 # Pip
@@ -49,14 +52,17 @@ pip_install:  ## Install requirements
 	done
 	pre-commit install
 
+pip_install_editable:  ## Install in editable mode
+	python3 -m pip install -e .
+
 pip_list:  ## Run pip list
 	python3 -m pip list
 
-pip_freeze:  ## Run pipfreezer
-	pipfreezer
+pip_freeze:  ## Run pipfreezer freeze
+	pipfreezer freeze  --verbose
 
-pip_checker:  ## Run pipchecker
-	python3 manage.py pipchecker
+pip_upgrade:  ## Run pipfreezer upgrade
+	pipfreezer upgrade  --verbose
 
 # -----------------------------------------------------------------------------
 # Django

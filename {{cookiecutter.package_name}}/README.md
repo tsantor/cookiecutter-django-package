@@ -54,8 +54,7 @@ make superuser
 make serve
 ```
 
-or simply `make from_scratch`
-
+- Visit `http://127.0.0.1:8000/` for the default "It worked" page
 - Visit `http://127.0.0.1:8000/admin/` for the Django Admin
 
 ### Testing
