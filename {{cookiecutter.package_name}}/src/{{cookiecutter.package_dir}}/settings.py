@@ -4,7 +4,7 @@ Settings for {{cookiecutter.project_name}} are all namespaced in the
 `settings.py` file might look like this:
 
 {{cookiecutter.package_dir.upper()}} = {
-    "FOO": "{{cookiecutter.package_dir}}.utils.foo"
+    "MY_MODEL": "{{cookiecutter.package_dir}}.models.MyModel"
 }
 
 This module provides the `api_settings` object, that is used to access
@@ -17,14 +17,14 @@ from django.test.signals import setting_changed
 from django.utils.module_loading import import_string
 
 DEFAULTS = {
-    "FOO": "{{cookiecutter.package_dir}}.utils.foo",  # example only
-    "BAR": "value",  # example only
+    "MY_MODEL": "{{cookiecutter.package_dir}}.models.MyModel",  # example only
+    "FOO": "bar",  # example only
 }
 
 
 # List of settings that may be in string import notation.
 IMPORT_STRINGS = [
-    "FOO",  # example only
+    "MY_MODEL",  # example only as it will be imported as a class
 ]
 
 
