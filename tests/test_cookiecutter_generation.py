@@ -83,7 +83,6 @@ def check_paths(paths):
 def test_project_generation(cookies, context, context_override):
     """Test that project is generated and fully rendered."""
 
-    print(context)
     result = cookies.bake(extra_context={**context, **context_override})
     assert result.exit_code == 0
     assert result.exception is None
@@ -91,7 +90,6 @@ def test_project_generation(cookies, context, context_override):
     assert result.project_path.is_dir()
 
     paths = build_files_list(str(result.project_path))
-    print(paths)
     check_paths(paths)
 
 
