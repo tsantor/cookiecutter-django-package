@@ -70,7 +70,7 @@ eat:  ## Remove generated project
 # -----------------------------------------------------------------------------
 
 pytest:  ## Run tests
-	pytest -vx tests
+	pytest -vx
 
 # pytest_generation:  ## Run tests for cookiecutter generation
 # 	pytest -vx tests/test_cookiecutter_generation.py
@@ -78,8 +78,8 @@ pytest:  ## Run tests
 pytest_verbose:  ## Run tests in verbose mode
 	pytest -vvs
 
-# coverage:  ## Run tests with coverage
-# 	coverage run -m pytest && coverage html
+coverage:  ## Run tests with coverage
+	coverage run -m pytest && coverage html
 
 # coverage_verbose:  ## Run tests with coverage in verbose mode
 # 	coverage run -m pytest -vss && coverage html

@@ -2,8 +2,6 @@
 
 ![Coverage](https://img.shields.io/badge/coverage-97%25-brightgreen)
 
-<!-- ![Code Style](https://img.shields.io/badge/code_style-ruff-black) -->
-
 ## Overview
 
 {{ cookiecutter.description }}
@@ -13,7 +11,11 @@
 Install {{ cookiecutter.project_name }}:
 
 ```bash
+# From pypi
 python3 -m pip install {{cookiecutter.package_name}}
+
+# From source
+python3 -m pip install git+https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.package_name}}.git
 ```
 
 ### Settings
@@ -41,7 +43,7 @@ urlpatterns = [
 ]
 ```
 
-## Local Development
+## Development
 
 ```bash
 make env
@@ -62,6 +64,14 @@ or simply `make from_scratch`
 make pytest
 make coverage
 make open_coverage
+```
+
+## Deploying
+
+```bash
+# Publish to PyPI Test before the live PyPi
+make release_test
+make release
 ```
 
 ## Issues

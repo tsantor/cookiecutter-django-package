@@ -1,17 +1,28 @@
 # Cookiecutter Django Package
 
-A modern cookiecutter template for creation of a new Django package for PyPi.
+A modern cookiecutter template for creation of a new Django package following best practices.
+
+## Features
+The resulting generated Python package features:
+
+- `pyproject.toml`
+- `ruff` for formatting/linting
+- `pytest` and `coverage` for running tests
+- `pre-commit` to enforce formatting/linting before committing
+- `twine` for publishing to PyPI
+- `Makefile` with common development related commands
+- 100% test coverage
+- Passes `ruff check` linting
 
 ## Quickstart
 
-Install the latest Cookiecutter if you haven't installed it yet (this requires
-Cookiecutter 1.4.0 or higher)::
+Install Cookiecutter, if you don't already have it:
 
 ```bash
 python3 -m pip install -U cookiecutter
 ```
 
-Generate a Django package project:
+Generate a Django package:
 
 ```bash
 cookiecutter https://bitbucket.org/tsantor/cookiecutter-django-package.git
@@ -21,11 +32,10 @@ cookiecutter https://bitbucket.org/tsantor/cookiecutter-django-package.git
 
 ```bash
 make env
+make pytest
 ```
 
-## Basic Commands
-
-Run `make` to view a list of available commands.
+Run `make` to view a list of available commands with descriptions.
 
 ## Not Exactly What You Want?
 
