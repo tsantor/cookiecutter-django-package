@@ -4,7 +4,7 @@ Settings for {{cookiecutter.project_name}} are all namespaced in the
 `settings.py` file might look like this:
 
 {{cookiecutter.package_dir.upper()}} = {
-    'MY_MODEL': '{{cookiecutter.package_dir}}.models.MyModel'
+    "FOO": "{{cookiecutter.package_dir}}.utils.foo"
 }
 
 This module provides the `api_settings` object, that is used to access
@@ -45,7 +45,7 @@ def perform_import(val, setting_name):
         return None
     if isinstance(val, str):
         return import_from_string(val, setting_name)
-    if isinstance(val, (list | tuple)):
+    if isinstance(val, (list, tuple)):  # noqa: UP038
         return [import_from_string(item, setting_name) for item in val]
     return val
 

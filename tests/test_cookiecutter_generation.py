@@ -31,7 +31,7 @@ auto_fixable = pytest.mark.skipif(not AUTOFIXABLE_STYLES, reason="auto-fixable")
 def context():
     return {
         "project_name": "Django Package Boilerplate",
-        "package_name": "django-package-boilerplate",
+        "package_name": "my-django-package",
         "package_dir": "django_package_boilerplate",
         "author_name": "Test Author",
         "email": "test@example.com",

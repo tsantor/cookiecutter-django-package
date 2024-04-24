@@ -121,31 +121,8 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 
-# LOGGING = {
-#     "version": 1,
-#     "disable_existing_loggers": False,
-#     "formatters": {
-#         "verbose": {
-#             "format": "%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s",
-#         },
-#         "custom_formatter": {
-#             "format": "[%(levelname)s] %(asctime)s %(module)s %(process)d %(thread)d %(message)s",
-#             "datefmt": "%Y-%m-%d %I:%M:%S %p",
-#         },
-#     },
-#     "handlers": {
-#         "console": {
-#             "level": "DEBUG",
-#             "class": "logging.StreamHandler",
-#             "formatter": "custom_formatter",
-#         }
-#     },
-#     "root": {"level": "DEBUG", "handlers": ["console"]},
-#     "loggers": {
-#         "django": {
-#             "handlers": ["console"],
-#             "level": "DEBUG",
-#             "propagate": True,
-#         },
-#     },
-# }
+
+# User override settings for our package
+{{cookiecutter.package_dir.upper()}} = {
+    "FOO": "{{cookiecutter.package_dir}}.utils.foo"
+}

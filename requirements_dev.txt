@@ -1,16 +1,16 @@
-cookiecutter
-sh
+cookiecutter==2.6.0
+sh==2.0.6
 watchdog[watchmedo]
 
 # Code quality
 # ------------------------------------------------------------------------------
-ruff
+ruff==0.4.1
 
 # Testing
 # ------------------------------------------------------------------------------
-pytest
-pytest-cookies
+pytest==8.1.1
+pytest-cookies==0.7.0
 
 # X Studios
 # ------------------------------------------------------------------------------
-pip-freezer
+pip-freezer==0.3.7
