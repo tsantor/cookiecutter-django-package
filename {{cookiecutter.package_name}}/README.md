@@ -6,7 +6,7 @@
 
 ## Overview
 
-{{ cookiecutter.project_short_description }}
+{{ cookiecutter.description }}
 
 ## Quickstart
 

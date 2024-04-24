@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "{{ cookiecutter.package_name }}"
-description = "{{ cookiecutter.project_short_description }}"
+description = "{{ cookiecutter.description }}"
 classifiers = [
   "Development Status :: 5 - Production/Stable",
   "Intended Audience :: Developers",

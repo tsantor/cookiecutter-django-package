@@ -16,7 +16,7 @@ def test_perform_import():
     assert perform_import(None, "MY_SETTING") is None
     assert perform_import("django.conf.settings", "MY_SETTING") == settings
     assert perform_import(["django.conf.settings"], "MY_SETTING") == [settings]
-    assert perform_import(123, "MY_SETTING") == 123
+    assert perform_import(123, "MY_SETTING") == 123  # noqa: PLR2004
 
 
 def test_import_from_string():
@@ -26,7 +26,7 @@ def test_import_from_string():
 
 
 
-@patch('{{cookiecutter.package_dir}}.settings.api_settings')
+@patch("{{cookiecutter.package_dir}}.settings.api_settings")
 def test_reload_api_settings(mock_api_settings):
     # Arrange
     setting = "{{cookiecutter.package_dir.upper()}}"
@@ -70,15 +70,13 @@ class TestAPISettings:
             APISettings({"REMOVED_SETTING": "value"})
 
     def test_user_settings(self, api_settings):
-        api_settings.user_settings == {
+        assert api_settings.user_settings == {
             "FOO": "{{cookiecutter.package_dir}}.utils.foo"
         }
 
-
-
     def test_reload(self, api_settings):
         api_settings.reload()
-        assert "FOO" not in api_settings._cached_attrs
+        assert "FOO" not in api_settings._cached_attrs  # noqa: SLF001
 
     # def test_setting_changed(self, api_settings):
     #     settings.DJANGO_PACKAGE_BOILERPLATE = {"FOO": "new_value"}

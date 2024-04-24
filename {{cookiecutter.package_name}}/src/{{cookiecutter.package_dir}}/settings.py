@@ -18,7 +18,7 @@ from django.utils.module_loading import import_string
 
 DEFAULTS = {
     "FOO": "{{cookiecutter.package_dir}}.utils.foo",  # example only
-    "BAR": "value"  # example only
+    "BAR": "value",  # example only
 }
 
 
@@ -33,6 +33,8 @@ REMOVED_SETTINGS = [
     "REMOVED_SETTING",  # example only
 ]
 
+SETTINGS_DOC = "TODO"  # TODO: Add link to documentation
+
 
 def perform_import(val, setting_name):
     """
@@ -43,7 +45,7 @@ def perform_import(val, setting_name):
         return None
     if isinstance(val, str):
         return import_from_string(val, setting_name)
-    if isinstance(val, (list, tuple)):
+    if isinstance(val, (list | tuple)):
         return [import_from_string(item, setting_name) for item in val]
     return val
 
@@ -56,7 +58,7 @@ def import_from_string(val, setting_name):
         return import_string(val)
     except ImportError as e:
         msg = f"Could not import '{val}' for API setting '{setting_name}'. {e.__class__.__name__}: {e}."
-        raise ImportError(msg)
+        raise ImportError(msg) from e
 
 
 class APISettings:
@@ -111,7 +113,6 @@ class APISettings:
         return val
 
     def __check_user_settings(self, user_settings):
-        SETTINGS_DOC = "TODO"
         for setting in REMOVED_SETTINGS:
             if setting in user_settings:
                 msg = f"The '{setting}' setting has been removed. Please refer to '{SETTINGS_DOC}' for available settings."
