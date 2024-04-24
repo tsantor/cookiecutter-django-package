@@ -48,7 +48,7 @@ def api_settings():
 class TestAPISettings:
 
     def test_api_settings(self, api_settings):
-        assert api_settings.FOO == import_string("{{cookiecutter.package_dir}}.utils.foo")
+        assert api_settings.MY_MODEL == import_string("{{cookiecutter.package_dir}}.models.MyModel")
 
     # def test_override_settings(self, api_settings):
     #     from django.test import override_settings
@@ -58,8 +58,8 @@ class TestAPISettings:
     #         assert api_settings.FOO == settings
 
     def test_user_setting(self):
-        api_settings = APISettings({"BAR": "value"})
-        assert api_settings.BAR == "value"
+        api_settings = APISettings({"FOO": "newvalue"})
+        assert api_settings.FOO == "newvalue"
 
     def test_non_existent_setting(self, api_settings):
         with pytest.raises(AttributeError):
@@ -70,13 +70,11 @@ class TestAPISettings:
             APISettings({"REMOVED_SETTING": "value"})
 
     def test_user_settings(self, api_settings):
-        assert api_settings.user_settings == {
-            "FOO": "{{cookiecutter.package_dir}}.utils.foo"
-        }
+        assert api_settings.user_settings == {"FOO": "newvalue"}
 
     def test_reload(self, api_settings):
         api_settings.reload()
-        assert "FOO" not in api_settings._cached_attrs  # noqa: SLF001
+        assert "MY_MODEL" not in api_settings._cached_attrs  # noqa: SLF001
 
     # def test_setting_changed(self, api_settings):
     #     settings.DJANGO_PACKAGE_BOILERPLATE = {"FOO": "new_value"}

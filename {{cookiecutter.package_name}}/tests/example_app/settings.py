@@ -84,5 +84,5 @@ STATIC_URL = "/static/"
 
 # User override settings for our package
 {{cookiecutter.package_dir.upper()}} = {
-    "FOO": "{{cookiecutter.package_dir}}.utils.foo"
+    "FOO": "newvalue"
 }
